@@ -2,6 +2,11 @@
     "files.associations": {
         "stdlib.h": "c",
         "linked_list.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stacks.h": "c",
+        "__locale": "c",
+        "string": "c",
+        "string_view": "c",
+        "op.h": "c"
     }
 }

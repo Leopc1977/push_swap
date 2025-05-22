@@ -1,10 +1,11 @@
-#include "linked_list.h"
+#include "stacks.h"
 
 #ifndef OP_H
 # define OP_H
 
-t_linked_list *ra(t_linked_list *l_a);
+t_stacks *ra(t_stacks *stacks);
 
-t_linked_list *pb(t_linked_list *l_a, t_linked_list *l_b);
+t_stacks *pb(t_stacks *stacks);
+t_stacks *pa(t_stacks *stacks);
 
 #endif

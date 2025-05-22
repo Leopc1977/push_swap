@@ -1,21 +1,23 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "linked_list.h"
+#include "stacks.h"
 
-t_linked_list *pb(t_linked_list *l_a, t_linked_list *l_b) {
-    if (l_b == NULL) {
-        l_b = malloc(sizeof(t_linked_list));
-        l_b->v = l_a->v;
-        l_b->next = NULL;
+t_stacks *pb(t_stacks *stacks) {
+    if (stacks->l_b == NULL) {
+        stacks->l_b = malloc(sizeof(t_linked_list));
+        stacks->l_b->v = stacks->l_a->v;
+        stacks->l_b->next = NULL;
     } else {
         t_linked_list *new = malloc(sizeof(t_linked_list));
-        new->v = l_a->v;
-        new->next = l_b;
-        l_b = new;
+        new->v = stacks->l_a->v;
+        new->next = stacks->l_b;
+        stacks->l_b = new;
     }
+
+    stacks->l_a = stacks->l_a->next;
 
     printf("pb\n");
 
-    return l_b;
+    return stacks;
 }

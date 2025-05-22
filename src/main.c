@@ -1,34 +1,50 @@
 #include <stdio.h> 
 #include <stdlib.h>
-#include "linked_list.h"
+
+#include "stacks.h"
 #include "utils.h"
 #include "op.h"
 
 int main(int ac, char **av) {
+    int count_op = 0;
     if (ac < 2) {
-        printf("Usage: %s <filename>\n", av[0]);
+        printf("Usage: ./push_swap <numbers>\n");
         return 1;
     }
 
-    t_linked_list *l_a = get_input(ac, av);
-    t_linked_list *l_b = NULL;
+    t_stacks *stacks = malloc(sizeof(t_stacks));
+    stacks->l_a = get_input(ac, av);
+    stacks->l_b = NULL;
 
-    while (l_a) {
-        int cur_min = get_min(l_a);
+    if (a_is_sorted(stacks)) {
+        free_all(stacks);
+        return 0;
+    }
 
-        if (l_a->v != cur_min) {
-            l_a = ra(l_a);
+    while (stacks->l_a) {
+        int cur_min = get_min(stacks->l_a);
+
+        if (stacks->l_a->v != cur_min) {
+            stacks = ra(stacks);
+            count_op++;
         }
-        if (l_a->v == cur_min) {
-            l_b = pb(l_a, l_b);
-            l_a = l_a->next;
+        else if (stacks->l_a->v == cur_min) {
+            stacks = pb(stacks);
+            count_op++;
         }
     }
 
-    while (l_b) {
-        l_a = pb(l_b, l_a);
-        l_b = l_b->next;
+    push_to_a(stacks);
+
+    printf("count_op: %d\n", count_op);
+    t_linked_list *tmp = stacks->l_a;
+    while (tmp) {
+        printf("[%d] ", tmp->v);
+        tmp = tmp->next;
     }
+    printf("\n");
+    
+    free_all(stacks);
 
     return 0;
 }

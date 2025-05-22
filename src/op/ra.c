@@ -1,18 +1,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "linked_list.h"
+#include "stacks.h"
 
-t_linked_list *ra(t_linked_list *l_a) {
-    t_linked_list *new_head = l_a->next;
-    l_a->next = NULL;
-
-    t_linked_list *last = l_a;
+t_stacks *ra(t_stacks *stacks) {
+    t_linked_list *first = stacks->l_a;
+    t_linked_list *new_head = first->next;
+    t_linked_list *last = new_head;
 
     while (last->next != NULL) last = last->next;
-    last->next = l_a;
+
+    last->next = first;
+    stacks->l_a = new_head;
+    first->next = NULL;
 
     printf("ra\n");
 
-    return new_head;
+    return stacks;
 }
