@@ -1,8 +1,12 @@
 #include "stacks.h"
 #include "op.h"
+#include "utils.h"
+#include <stdio.h>
 
-void push_to_a(t_stacks *stacks) {
+t_stacks *push_to_a(t_stacks *stacks) {
     while (stacks->l_b) {
         stacks = pa(stacks);
     }
+
+    return stacks;
 }

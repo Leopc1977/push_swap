@@ -4,6 +4,10 @@
 #include "stacks.h"
 
 t_stacks *ra(t_stacks *stacks) {
+    if (!stacks || !stacks->l_a || !stacks->l_a->next) {
+        return stacks;
+    }
+
     t_linked_list *first = stacks->l_a;
     t_linked_list *new_head = first->next;
     t_linked_list *last = new_head;

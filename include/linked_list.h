@@ -3,6 +3,7 @@
 
 typedef struct s_linked_list {
     int v;
+    char *bin_v;
     struct s_linked_list* next;
 } t_linked_list;    
 

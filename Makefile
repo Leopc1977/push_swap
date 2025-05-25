@@ -28,6 +28,6 @@ fclean: clean
 re: fclean all
 
 run: re
-	./$(NAME) 50 3 200
+	./$(NAME) 4 2 3 1
 
 .PHONY: all clean fclean re

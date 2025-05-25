@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "linked_list.h"
 #include "utils.h"
 
@@ -28,17 +29,22 @@ t_linked_list *get_input(int ac, char **av) {
     qsort(input, ac - 1, sizeof(t_input), compare);
 
     h_input->v = input[0].init_pos;
+    h_input->bin_v = get_bin_v(input[0].init_pos);
     h_input->next = NULL;
 
     for (int i = 2; i < ac; i++) {
         t_linked_list *new = malloc(sizeof(t_linked_list));
 
         new->v = input[i - 1].init_pos;
+        new->bin_v = get_bin_v(input[i - 1].init_pos);
+
         new->next = NULL;
 
         c_input->next = new;
         c_input = new;
     }
+
+    free(input);
 
     return h_input;
 }

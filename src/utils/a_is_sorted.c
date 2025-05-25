@@ -9,5 +9,6 @@ int a_is_sorted(t_stacks *stacks) {
         }
         tmp = tmp->next;
     }
+
     return 1;
 }

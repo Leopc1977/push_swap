@@ -4,18 +4,21 @@
 #include "stacks.h"
 
 t_stacks *pb(t_stacks *stacks) {
+    if (!stacks || !stacks->l_a)
+        return stacks;
+
+    t_linked_list *new_l_a = stacks->l_a->next;
+
     if (stacks->l_b == NULL) {
-        stacks->l_b = malloc(sizeof(t_linked_list));
-        stacks->l_b->v = stacks->l_a->v;
+        stacks->l_b = stacks->l_a;
         stacks->l_b->next = NULL;
     } else {
-        t_linked_list *new = malloc(sizeof(t_linked_list));
-        new->v = stacks->l_a->v;
-        new->next = stacks->l_b;
+        t_linked_list *new = stacks->l_a;
+        stacks->l_a->next = stacks->l_b;
         stacks->l_b = new;
     }
 
-    stacks->l_a = stacks->l_a->next;
+    stacks->l_a = new_l_a;
 
     printf("pb\n");
 

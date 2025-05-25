@@ -8,5 +8,6 @@ int get_min(t_linked_list *stack) {
         if (cur->v < min) min = cur->v;
         cur = cur->next;
     }
+
     return min;
 }
