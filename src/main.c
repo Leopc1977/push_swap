@@ -13,7 +13,10 @@ int main(int ac, char **av) {
     }
 
     t_stacks *stacks = malloc(sizeof(t_stacks));
+    if (stacks == NULL) return 1;
+
     stacks->l_a = get_input(ac, av);
+    if (stacks->l_a == NULL) return NULL;
     stacks->l_b = NULL;
 
     int list_len = get_linked_list_len(stacks->l_a);

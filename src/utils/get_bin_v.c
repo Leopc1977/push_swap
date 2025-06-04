@@ -13,8 +13,7 @@ char *get_bin_v(int n) {
     if (n == 0) len = 1;
 
     bin = malloc(sizeof(char) * (len + 1));
-    if (!bin)
-        return (NULL);
+    if (!bin) return (NULL);
 
     bin[len] = '\0';
     i = len - 1;
